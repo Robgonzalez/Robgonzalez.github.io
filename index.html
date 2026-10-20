@@ -2,7 +2,7 @@
 <html lang="es" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Roberto González — Senior Fullstack & AI-Augmented Engineer</title>
   <meta name="description" content="Ingeniería Fullstack (Vue, React, Node) con aceleración de IA y rigurosa gobernanza humana. +8 años en sistemas de alta demanda.">
   <link rel="icon" href="https://avatars.githubusercontent.com/u/12260586?v=4" type="image/png">
@@ -49,15 +49,23 @@
   </script>
 
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     :root {
       color-scheme: dark;
+    }
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
     body {
       background-color: #090a0f;
       color: #ededed;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
     .tech-grid {
       background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
@@ -80,7 +88,10 @@
     .num-tabular {
       font-variant-numeric: tabular-nums;
     }
-    /* Touch friendly scrollbars */
+    /* Touch friendly horizontal scroll for code */
+    pre {
+      -webkit-overflow-scrolling: touch;
+    }
     pre::-webkit-scrollbar {
       height: 4px;
     }
@@ -93,17 +104,17 @@
     }
   </style>
 </head>
-<body class="min-h-screen selection:bg-neutral-800 selection:text-white">
+<body class="min-h-screen selection:bg-neutral-800 selection:text-white w-full overflow-x-hidden">
 
-  <!-- Top Navigation -->
-  <header class="sticky top-0 z-50 bg-[#090a0f]/95 backdrop-blur-md hairline-border-b">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+  <!-- Top Navigation (Mobile Safe, No Overflow) -->
+  <header class="sticky top-0 z-50 bg-[#090a0f]/95 backdrop-blur-md hairline-border-b w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between w-full box-border">
       
       <!-- Left: Identity -->
-      <a href="#hero" class="flex items-center gap-2.5 min-h-[44px]">
+      <a href="#hero" class="flex items-center gap-2 min-h-[44px] min-w-0 shrink">
         <span class="w-2.5 h-2.5 rounded-sm bg-accent-emerald shrink-0"></span>
-        <span class="font-sans font-semibold text-sm tracking-tight text-white">Roberto González</span>
-        <span class="text-xs text-neutral-500 font-mono hidden md:inline-block">/ fullstack_ai_governance</span>
+        <span class="font-sans font-semibold text-sm tracking-tight text-white truncate">Roberto González</span>
+        <span class="text-xs text-neutral-500 font-mono hidden md:inline-block">/ fullstack_ai</span>
       </a>
 
       <!-- Middle: Desktop Nav -->
@@ -115,13 +126,13 @@
         <a href="#trayectoria" class="hover:text-white transition-colors">05. trayectoria</a>
       </nav>
 
-      <!-- Right: Mobile-Optimized Direct Actions -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <span class="text-[10px] sm:text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-2 py-0.5 rounded flex items-center gap-1">
+      <!-- Right: Mobile-Guaranteed Non-Clipping Action -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-2 py-0.5 rounded hidden sm:inline-flex items-center gap-1">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>disponible</span>
         </span>
-        <a href="#contacto" class="text-xs font-medium px-2.5 sm:px-3 py-1.5 rounded bg-white text-black hover:bg-neutral-200 transition-colors shrink-0">
+        <a href="#contacto" class="text-xs font-medium px-3 py-1.5 rounded bg-white text-black hover:bg-neutral-200 transition-colors shrink-0">
           Contratar
         </a>
       </div>
@@ -129,78 +140,78 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="relative pt-12 pb-14 sm:pt-20 sm:pb-20 md:pt-28 md:pb-24 tech-grid">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <!-- Hero Section (Strict Width Bounds) -->
+  <section id="hero" class="relative pt-10 pb-12 sm:pt-20 sm:pb-20 md:pt-28 md:pb-24 tech-grid w-full overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
       
       <!-- Meta Label -->
-      <div class="flex flex-wrap items-center gap-2 mb-4 sm:mb-6">
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-4 sm:mb-6">
         <span class="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-neutral-400">
-          Senior Fullstack & AI Integrator
+          Senior Fullstack &amp; AI Integrator
         </span>
         <span class="text-neutral-600 font-mono text-xs hidden sm:inline">•</span>
         <span class="font-mono text-[11px] sm:text-xs text-neutral-500">Santiago, CL (UTC-3)</span>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-tight text-white leading-[1.15] max-w-4xl mb-4 sm:mb-6">
+      <!-- Main Headline (Balanced Typography) -->
+      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-tight text-white leading-[1.2] max-w-4xl mb-4 sm:mb-6">
         La velocidad de la IA.<br class="hidden sm:inline">
-        <span class="text-neutral-400">El rigor y la arquitectura de un ingeniero senior.</span>
+        <span class="text-neutral-400 block sm:inline mt-1 sm:mt-0">El rigor de un ingeniero senior.</span>
       </h1>
 
       <!-- Subhead -->
-      <p class="text-sm sm:text-base md:text-lg text-neutral-400 max-w-2xl leading-relaxed mb-8 font-normal">
+      <p class="text-xs sm:text-base md:text-lg text-neutral-400 max-w-2xl leading-relaxed mb-6 sm:mb-8 font-normal">
         Construyo software web moderno (Vue, React, Node) acelerado por modelos de lenguaje, pero con supervisión arquitectónica estricta: <strong class="text-neutral-200 font-medium">cero alucinaciones, tipado estricto y código listo para producción.</strong>
       </p>
 
-      <!-- Action Strip: Touch & Mobile Optimized -->
-      <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-12 sm:mb-16">
-        <a href="#inspeccion" class="w-full sm:w-auto px-5 py-3 sm:py-2.5 rounded bg-white text-black text-xs font-mono font-semibold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 text-center min-h-[44px]">
+      <!-- Action Strip: 100% Width on Mobile, No Side-Bleed -->
+      <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-4 mb-10 sm:mb-16 w-full max-w-md sm:max-w-none">
+        <a href="#inspeccion" class="w-full sm:w-auto px-5 py-3 rounded bg-white text-black text-xs font-mono font-semibold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 text-center min-h-[44px]">
           <span>Ver flujo en consola</span>
           <span>↓</span>
         </a>
-        <a href="#servicios" class="w-full sm:w-auto px-5 py-3 sm:py-2.5 rounded hairline-border bg-base-900 text-neutral-300 text-xs font-mono hover:text-white hover:bg-base-850 transition-colors text-center min-h-[44px] flex items-center justify-center">
+        <a href="#servicios" class="w-full sm:w-auto px-5 py-3 rounded hairline-border bg-base-900 text-neutral-300 text-xs font-mono hover:text-white hover:bg-base-850 transition-colors text-center min-h-[44px] flex items-center justify-center">
           Servicios y entregables
         </a>
-        <button onclick="copyEmail()" class="w-full sm:w-auto px-4 py-3 sm:py-2.5 rounded hairline-border bg-base-900 text-neutral-400 text-xs font-mono hover:text-neutral-200 transition-colors flex items-center justify-center gap-2 min-h-[44px]" id="copyBtn">
+        <button onclick="copyEmail()" class="w-full sm:w-auto px-4 py-3 rounded hairline-border bg-base-900 text-neutral-400 text-xs font-mono hover:text-neutral-200 transition-colors flex items-center justify-center gap-2 min-h-[44px]" id="copyBtn">
           <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
           <span id="copyText">copiar correo</span>
         </button>
       </div>
 
-      <!-- Quick Metrics Grid: Clean 2x2 on Mobile without border artifacts -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 hairline-border rounded-lg overflow-hidden">
-        <div class="bg-base-950 p-4 sm:p-5">
-          <div class="text-[11px] font-mono text-neutral-400 mb-1">experiencia</div>
-          <div class="text-xl sm:text-2xl font-mono font-bold text-white num-tabular">+8 años</div>
-          <div class="text-[10px] sm:text-[11px] text-neutral-400 mt-1">Retail B2B & SaaS</div>
+      <!-- Quick Metrics Grid: Clean 2x2 with min-w-0 to prevent flex blowouts -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 hairline-border rounded-lg overflow-hidden w-full">
+        <div class="bg-base-950 p-3.5 sm:p-5 min-w-0">
+          <div class="text-[10px] sm:text-[11px] font-mono text-neutral-400 mb-1 truncate">experiencia</div>
+          <div class="text-lg sm:text-2xl font-mono font-bold text-white num-tabular">+8 años</div>
+          <div class="text-[10px] sm:text-[11px] text-neutral-500 mt-1 truncate">Retail B2B &amp; SaaS</div>
         </div>
-        <div class="bg-base-950 p-4 sm:p-5">
-          <div class="text-[11px] font-mono text-neutral-400 mb-1">tiempo_entrega</div>
-          <div class="text-xl sm:text-2xl font-mono font-bold text-white num-tabular">-50%</div>
-          <div class="text-[10px] sm:text-[11px] text-neutral-400 mt-1">Aceleración con IA</div>
+        <div class="bg-base-950 p-3.5 sm:p-5 min-w-0">
+          <div class="text-[10px] sm:text-[11px] font-mono text-neutral-400 mb-1 truncate">tiempo_entrega</div>
+          <div class="text-lg sm:text-2xl font-mono font-bold text-white num-tabular">-50%</div>
+          <div class="text-[10px] sm:text-[11px] text-neutral-500 mt-1 truncate">Aceleración con IA</div>
         </div>
-        <div class="bg-base-950 p-4 sm:p-5">
-          <div class="text-[11px] font-mono text-neutral-400 mb-1">alucinación</div>
-          <div class="text-xl sm:text-2xl font-mono font-bold text-accent-emerald num-tabular">0.00%</div>
-          <div class="text-[10px] sm:text-[11px] text-neutral-400 mt-1">Tipado y tests</div>
+        <div class="bg-base-950 p-3.5 sm:p-5 min-w-0">
+          <div class="text-[10px] sm:text-[11px] font-mono text-neutral-400 mb-1 truncate">alucinación</div>
+          <div class="text-lg sm:text-2xl font-mono font-bold text-accent-emerald num-tabular">0.00%</div>
+          <div class="text-[10px] sm:text-[11px] text-neutral-500 mt-1 truncate">Tipado y tests</div>
         </div>
-        <div class="bg-base-950 p-4 sm:p-5">
-          <div class="text-[11px] font-mono text-neutral-400 mb-1">disponibilidad</div>
-          <div class="text-xl sm:text-2xl font-mono font-bold text-white num-tabular">Inmediata</div>
-          <div class="text-[10px] sm:text-[11px] text-neutral-400 mt-1">Freelance activo</div>
+        <div class="bg-base-950 p-3.5 sm:p-5 min-w-0">
+          <div class="text-[10px] sm:text-[11px] font-mono text-neutral-400 mb-1 truncate">disponibilidad</div>
+          <div class="text-lg sm:text-2xl font-mono font-bold text-white num-tabular truncate">Inmediata</div>
+          <div class="text-[10px] sm:text-[11px] text-neutral-500 mt-1 truncate">Freelance activo</div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Interactive Terminal / Code Inspection Component (Mobile Optimized Tabs) -->
-  <section id="inspeccion" class="py-14 sm:py-20 hairline-border-b bg-[#0c0d14]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <!-- Interactive Terminal / Code Inspection Component (Strict Container Limits) -->
+  <section id="inspeccion" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
       
       <div class="mb-6 sm:mb-8">
-        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">02. Demostración en vivo</span>
+        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">02. Demostración en vivo</span>
         <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
           Cómo se ve la IA gobernada por un ingeniero senior
         </h2>
@@ -210,10 +221,10 @@
       </div>
 
       <!-- Terminal Window Component -->
-      <div class="hairline-border rounded-lg bg-base-950 overflow-hidden shadow-2xl">
+      <div class="hairline-border rounded-lg bg-base-950 overflow-hidden shadow-2xl w-full max-w-full">
         
         <!-- Terminal Titlebar & Responsive Tabs -->
-        <div class="bg-base-900 px-3 sm:px-4 py-3 hairline-border-b flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="bg-base-900 px-3 sm:px-4 py-2.5 hairline-border-b flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-neutral-700"></span>
@@ -222,49 +233,47 @@
             <span class="text-xs font-mono text-neutral-400 ml-1.5 truncate">code_audit_diff.ts</span>
           </div>
 
-          <!-- Touch-friendly Step Switcher Tabs (Responsive Labels) -->
-          <div class="grid grid-cols-3 sm:flex items-center gap-1 bg-base-950 p-1 rounded hairline-border w-full sm:w-auto">
-            <button onclick="switchTab('prompt')" id="tab-prompt" class="px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[34px]">
+          <!-- Touch Tabs (3-col mobile grid, never overflows) -->
+          <div class="grid grid-cols-3 sm:flex items-center gap-1 bg-base-950 p-1 rounded hairline-border w-full sm:w-auto box-border">
+            <button onclick="switchTab('prompt')" id="tab-prompt" class="px-1.5 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[34px]">
               <span class="sm:hidden">1. IA</span>
               <span class="hidden sm:inline">1. Propuesta de IA</span>
             </button>
-            <button onclick="switchTab('audit')" id="tab-audit" class="px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[34px]">
+            <button onclick="switchTab('audit')" id="tab-audit" class="px-1.5 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[34px]">
               <span class="sm:hidden">2. Humano</span>
               <span class="hidden sm:inline">2. Auditoría (Diff)</span>
             </button>
-            <button onclick="switchTab('prod')" id="tab-prod" class="px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[34px]">
+            <button onclick="switchTab('prod')" id="tab-prod" class="px-1.5 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[34px]">
               <span class="sm:hidden">3. Tests</span>
-              <span class="hidden sm:inline">3. Código & Tests</span>
+              <span class="hidden sm:inline">3. Código &amp; Tests</span>
             </button>
           </div>
 
         </div>
 
-        <!-- Code Content Area: Mobile scroll & readable font size -->
-        <div class="p-4 sm:p-6 font-mono text-[11px] sm:text-xs md:text-sm leading-relaxed overflow-x-auto min-h-[260px] sm:min-h-[300px]">
+        <!-- Code Content Area: Strict box-sizing & horizontal containment -->
+        <div class="p-3.5 sm:p-6 font-mono text-[11px] sm:text-xs md:text-sm leading-relaxed overflow-x-auto w-full max-w-full box-border min-h-[250px] sm:min-h-[290px]">
           
           <!-- State 1: Raw AI Draft -->
-          <div id="content-prompt" class="block">
-            <div class="text-neutral-500 mb-2 sm:mb-3">// ⚠️ Lo que propone un LLM sin supervisión (código frágil, sin validación, tipo `any`)</div>
-            <pre class="text-neutral-300"><code><span class="text-purple-400">export async function</span> <span class="text-blue-400">processPayment</span>(data: <span class="text-red-400">any</span>) {
-  <span class="text-neutral-500">// Vulnerabilidad: Sin validación de esquemas ni sanitización</span>
+          <div id="content-prompt" class="block w-full">
+            <div class="text-neutral-500 mb-2">// ⚠️ Lo que propone un LLM sin supervisión (código frágil, sin validación, tipo any)</div>
+            <pre class="text-neutral-300 overflow-x-auto max-w-full"><code><span class="text-purple-400">export async function</span> <span class="text-blue-400">processPayment</span>(data: <span class="text-red-400">any</span>) {
+  <span class="text-neutral-500">// Vulnerabilidad: Sin validación de esquemas</span>
   <span class="text-purple-400">const</span> res = <span class="text-purple-400">await</span> fetch(<span class="text-amber-300">'/api/checkout'</span>, {
     method: <span class="text-amber-300">'POST'</span>,
     body: JSON.stringify(data)
   });
-  
-  <span class="text-neutral-500">// Falla silenciosa: si res falla, devuelve unhandled rejection</span>
   <span class="text-purple-400">return</span> res.json();
 }</code></pre>
-            <div class="mt-4 p-3 rounded bg-red-950/20 border border-red-900/40 text-red-400 text-[11px] sm:text-xs">
-              <strong>Diagnóstico Senior:</strong> Falta tipado estricto, no maneja timeouts, no valida schema del payload y falla silenciosamente si la API externa cae.
+            <div class="mt-3 p-2.5 rounded bg-red-950/20 border border-red-900/40 text-red-400 text-[11px] leading-relaxed">
+              <strong>Diagnóstico Senior:</strong> Falta tipado estricto, no maneja timeouts ni valida el payload. Falla silenciosamente si la API externa cae.
             </div>
           </div>
 
           <!-- State 2: Human Audit Diff -->
-          <div id="content-audit" class="hidden">
-            <div class="text-neutral-500 mb-2 sm:mb-3">// 🔍 Auditoría Senior: Detección de riesgos y refactorización arquitectónica</div>
-            <pre class="text-neutral-300"><code><span class="text-neutral-500">+ import { z } from 'zod';</span>
+          <div id="content-audit" class="hidden w-full">
+            <div class="text-neutral-500 mb-2">// 🔍 Auditoría Senior: Detección de riesgos y refactorización arquitectónica</div>
+            <pre class="text-neutral-300 overflow-x-auto max-w-full"><code><span class="text-neutral-500">+ import { z } from 'zod';</span>
 <span class="text-neutral-500">+ import { Result, err, ok } from '@/shared/result';</span>
 
 <span class="text-neutral-500">+ const PaymentSchema = z.object({</span>
@@ -279,23 +288,23 @@
 <span class="text-emerald-400">+   if (!validation.success) return err(new ValidationError(validation.error));</span>
 <span class="text-neutral-500">+   // ... Conexión segura con timeout y circuit breaker</span>
 <span class="text-emerald-400">+ }</span></code></pre>
-            <div class="mt-4 p-3 rounded bg-amber-950/20 border border-amber-900/40 text-amber-300 text-[11px] sm:text-xs">
+            <div class="mt-3 p-2.5 rounded bg-amber-950/20 border border-amber-900/40 text-amber-300 text-[11px] leading-relaxed">
               <strong>Decisión Humana:</strong> Se implementa `Result Pattern` (sin excepciones no controladas) y validación de tipos en runtime con Zod.
             </div>
           </div>
 
           <!-- State 3: Production Code + Verification -->
-          <div id="content-prod" class="hidden">
-            <div class="text-neutral-500 mb-2 sm:mb-3">// ✅ Resultado en Producción: Código probado, tipado y verificado en CI</div>
-            <pre class="text-neutral-300"><code><span class="text-emerald-400">✓ tests/checkout.spec.ts</span> (4 passed, 0 failed)
+          <div id="content-prod" class="hidden w-full">
+            <div class="text-neutral-500 mb-2">// ✅ Resultado en Producción: Código probado, tipado y verificado en CI</div>
+            <pre class="text-neutral-300 overflow-x-auto max-w-full"><code><span class="text-emerald-400">✓ tests/checkout.spec.ts</span> (4 passed, 0 failed)
 <span class="text-emerald-400">✓ typecheck:</span> 0 errors across 48 modules [vue-tsc]
 <span class="text-emerald-400">✓ security:</span> 0 vulnerabilities [secret-scan clean]
 <span class="text-neutral-400">  Bundle: 14.2 kB gzip (0 layout shifts, 99.8% coverage)</span>
 
 <span class="text-neutral-500">Estado de entrega: Listo para producción.</span></code></pre>
-            <div class="mt-4 p-3 rounded bg-emerald-950/30 border border-emerald-800/40 text-emerald-300 text-[11px] sm:text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <div class="mt-3 p-2.5 rounded bg-emerald-950/30 border border-emerald-800/40 text-emerald-300 text-[11px] flex flex-col sm:flex-row sm:items-center justify-between gap-1">
               <span><strong>Garantía:</strong> Validación estricta y tests de regresión antes de entregar.</span>
-              <span class="font-mono text-[10px] sm:text-[11px] text-emerald-400 self-start sm:self-auto">BUILD PASSING</span>
+              <span class="font-mono text-[10px] text-emerald-400 self-start sm:self-auto">BUILD PASSING</span>
             </div>
           </div>
 
@@ -313,8 +322,8 @@
   </section>
 
   <!-- Filosofía / Manifiesto Técnico -->
-  <section id="manifiesto" class="py-14 sm:py-20 hairline-border-b">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <section id="manifiesto" class="py-12 sm:py-20 hairline-border-b w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
       
       <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
         <div class="md:col-span-5">
@@ -337,12 +346,12 @@
   </section>
 
   <!-- Servicios Freelance (Bento Grid) -->
-  <section id="servicios" class="py-14 sm:py-20 hairline-border-b bg-[#0c0d14]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <section id="servicios" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12">
         <div>
-          <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">03. Servicios paquetizados</span>
+          <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">03. Servicios paquetizados</span>
           <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
             Soluciones para trabajos pequeños y medianos
           </h2>
@@ -353,13 +362,13 @@
       </div>
 
       <!-- Bento Grid de Servicios -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 hairline-border rounded-lg overflow-hidden">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 hairline-border rounded-lg overflow-hidden w-full">
         
         <!-- Servicio 1 -->
-        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors">
+        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors min-w-0">
           <div>
             <div class="text-[11px] font-mono text-neutral-400 mb-2">01 / FRONTEND</div>
-            <h3 class="text-base font-sans font-semibold text-white mb-2">Dashboards & UI Reactiva</h3>
+            <h3 class="text-base font-sans font-semibold text-white mb-2">Dashboards &amp; UI Reactiva</h3>
             <p class="text-xs text-neutral-400 leading-relaxed mb-4">
               Desarrollo de interfaces de usuario en Vue 3 o React, paneles de control con gráficos y tablas, y consumo de APIs con estado predecible (Pinia/Zustand).
             </p>
@@ -371,10 +380,10 @@
         </div>
 
         <!-- Servicio 2 -->
-        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors">
+        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors min-w-0">
           <div>
             <div class="text-[11px] font-mono text-neutral-400 mb-2">02 / DIAGNÓSTICO</div>
-            <h3 class="text-base font-sans font-semibold text-white mb-2">Bug Fixing & Rescate</h3>
+            <h3 class="text-base font-sans font-semibold text-white mb-2">Bug Fixing &amp; Rescate</h3>
             <p class="text-xs text-neutral-400 leading-relaxed mb-4">
               Detección de causas raíz en aplicaciones rotas, fugas de memoria, problemas de renderizado en frontend o incompatibilidad de librerías.
             </p>
@@ -386,9 +395,9 @@
         </div>
 
         <!-- Servicio 3 -->
-        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors">
+        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors min-w-0">
           <div>
-            <div class="text-[11px] font-mono text-neutral-400 mb-2">03 / BACKEND & APIS</div>
+            <div class="text-[11px] font-mono text-neutral-400 mb-2">03 / BACKEND &amp; APIS</div>
             <h3 class="text-base font-sans font-semibold text-white mb-2">Integraciones Node.js</h3>
             <p class="text-xs text-neutral-400 leading-relaxed mb-4">
               Conexión de pasarelas de pago (Stripe, Mercado Pago), webhooks, servicios de autenticación y desarrollo de endpoints REST documentados.
@@ -401,10 +410,10 @@
         </div>
 
         <!-- Servicio 4 -->
-        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors">
+        <div class="bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:bg-base-900 transition-colors min-w-0">
           <div>
-            <div class="text-[11px] font-mono text-neutral-400 mb-2">04 / IA APIS & MCP</div>
-            <h3 class="text-base font-sans font-semibold text-white mb-2">Servidores MCP & Agentes</h3>
+            <div class="text-[11px] font-mono text-neutral-400 mb-2">04 / IA APIS &amp; MCP</div>
+            <h3 class="text-base font-sans font-semibold text-white mb-2">Servidores MCP &amp; Agentes</h3>
             <p class="text-xs text-neutral-400 leading-relaxed mb-4">
               Construcción de servidores Model Context Protocol (MCP) para conectar asistentes de IA (Cursor, Claude, Gemini) con tus bases de datos y herramientas internas.
             </p>
@@ -421,11 +430,11 @@
   </section>
 
   <!-- Proyectos Públicos en GitHub -->
-  <section id="proyectos" class="py-14 sm:py-20 hairline-border-b">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <section id="proyectos" class="py-12 sm:py-20 hairline-border-b w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
       
       <div class="mb-8 sm:mb-12">
-        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">04. Código fuente público</span>
+        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">04. Código fuente público</span>
         <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
           Proyectos vitrina en GitHub
         </h2>
@@ -434,10 +443,10 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full">
         
         <!-- Project 1 -->
-        <div class="hairline-border rounded-lg bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:border-neutral-500 transition-colors">
+        <div class="hairline-border rounded-lg bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:border-neutral-500 transition-colors min-w-0">
           <div>
             <div class="flex items-center justify-between text-xs font-mono text-neutral-500 mb-3">
               <span>Python · AI Agents</span>
@@ -457,7 +466,7 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="hairline-border rounded-lg bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:border-neutral-500 transition-colors">
+        <div class="hairline-border rounded-lg bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:border-neutral-500 transition-colors min-w-0">
           <div>
             <div class="flex items-center justify-between text-xs font-mono text-neutral-500 mb-3">
               <span>Vue.js · SPA</span>
@@ -477,7 +486,7 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="hairline-border rounded-lg bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:border-neutral-500 transition-colors">
+        <div class="hairline-border rounded-lg bg-base-950 p-5 sm:p-6 flex flex-col justify-between hover:border-neutral-500 transition-colors min-w-0">
           <div>
             <div class="flex items-center justify-between text-xs font-mono text-neutral-500 mb-3">
               <span>Angular · TypeScript</span>
@@ -502,11 +511,11 @@
   </section>
 
   <!-- Trayectoria y Experiencia -->
-  <section id="trayectoria" class="py-14 sm:py-20 hairline-border-b bg-[#0c0d14]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <section id="trayectoria" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
       
       <div class="max-w-3xl">
-        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">05. Trayectoria</span>
+        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">05. Trayectoria</span>
         <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight mb-3 sm:mb-4">
           Más de 8 años construyendo plataformas de alta escala
         </h2>
@@ -514,10 +523,10 @@
           Mi experiencia proviene de coordinar equipos técnicos y resolver incidencias en sistemas de retail corporativo con millones de visitas.
         </p>
 
-        <div class="space-y-4 sm:space-y-6">
-          <div class="hairline-border p-4 sm:p-5 rounded-lg bg-base-950">
+        <div class="space-y-4 sm:space-y-6 w-full">
+          <div class="hairline-border p-4 sm:p-5 rounded-lg bg-base-950 min-w-0">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
-              <span class="font-sans font-semibold text-white text-sm">Retail Corporativo & eCommerce Masivo</span>
+              <span class="font-sans font-semibold text-white text-sm">Retail Corporativo &amp; eCommerce Masivo</span>
               <span class="text-[11px] font-mono text-neutral-400">Sodimac · La Polar</span>
             </div>
             <p class="text-xs text-neutral-400 leading-relaxed">
@@ -525,9 +534,9 @@
             </p>
           </div>
 
-          <div class="hairline-border p-4 sm:p-5 rounded-lg bg-base-950">
+          <div class="hairline-border p-4 sm:p-5 rounded-lg bg-base-950 min-w-0">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
-              <span class="font-sans font-semibold text-white text-sm">Especialista Frontend Moderno & Aceleración</span>
+              <span class="font-sans font-semibold text-white text-sm">Especialista Frontend Moderno &amp; Aceleración</span>
               <span class="text-[11px] font-mono text-neutral-400">Vue 3 · React · Node.js</span>
             </div>
             <p class="text-xs text-neutral-400 leading-relaxed">
@@ -542,8 +551,8 @@
   </section>
 
   <!-- Contacto / Fast Pitch (Mobile-First CTA) -->
-  <section id="contacto" class="py-16 sm:py-24">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+  <section id="contacto" class="py-14 sm:py-24 w-full">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center w-full box-border">
       
       <div class="inline-block font-mono text-[10px] sm:text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-3 py-1 rounded-full mb-6">
         ● DISPONIBLE PARA CONTRATACIÓN INMEDIATA
@@ -556,7 +565,7 @@
         Escríbeme con los detalles de tu problema o requerimiento. Te respondo con una estimación honesta de plazos y solución técnica en menos de 24 horas.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none mx-auto">
         <a href="mailto:roberto.gonzalezj@gmail.com" class="w-full sm:w-auto px-6 py-3.5 rounded bg-white text-black text-xs font-mono font-semibold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 min-h-[44px]">
           <span>roberto.gonzalezj@gmail.com</span>
           <span>→</span>
@@ -569,7 +578,7 @@
         </a>
       </div>
 
-      <div class="mt-10 sm:mt-12 text-[11px] font-mono text-neutral-400">
+      <div class="mt-8 sm:mt-12 text-[11px] font-mono text-neutral-400">
         Respuesta garantizada &lt; 24h · Zona horaria Santiago, Chile (UTC-3)
       </div>
 
@@ -577,10 +586,10 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 hairline-border-t text-xs font-mono text-neutral-400">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+  <footer class="py-8 hairline-border-t text-xs font-mono text-neutral-400 w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left w-full box-border">
       <div>
-        © 2026 Roberto González · Senior Fullstack & AI Governance
+        © 2026 Roberto González · Senior Fullstack &amp; AI Governance
       </div>
       <div class="flex items-center justify-center gap-6">
         <a href="https://github.com/Robgonzalez" target="_blank" class="hover:text-neutral-300 transition-colors p-2">github</a>
@@ -598,11 +607,11 @@
         const btn = document.getElementById('tab-' + t);
         const content = document.getElementById('content-' + t);
         if (t === tab) {
-          btn.className = 'px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[34px]';
+          btn.className = 'px-1.5 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[34px]';
           content.classList.remove('hidden');
           content.classList.add('block');
         } else {
-          btn.className = 'px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[34px]';
+          btn.className = 'px-1.5 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[34px]';
           content.classList.add('hidden');
           content.classList.remove('block');
         }
