@@ -2,7 +2,7 @@
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roberto González — Senior Fullstack & AI-Augmented Engineer</title>
   <meta name="description" content="Ingeniería Fullstack (Vue, React, Node) con aceleración de IA y rigurosa gobernanza humana. +8 años en sistemas de alta demanda.">
   <link rel="icon" href="https://avatars.githubusercontent.com/u/12260586?v=4" type="image/png">
@@ -49,21 +49,15 @@
   </script>
 
   <style>
-    /* Absolute Box Sizing */
+    /* CRITICAL UNIVERSAL RESET: Enforce min-width: 0 so no element can ever expand layout width */
     *, *::before, *::after {
       box-sizing: border-box !important;
+      min-width: 0 !important;
     }
     :root {
       color-scheme: dark;
     }
-    html {
-      width: 100% !important;
-      max-width: 100% !important;
-      overflow-x: hidden !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    body {
+    html, body {
       width: 100% !important;
       max-width: 100% !important;
       overflow-x: hidden !important;
@@ -75,7 +69,7 @@
       -webkit-font-smoothing: antialiased;
     }
     
-    /* MASTER RESPONSIVE WRAPPER: Guarantees 20px - 32px safe margins on both sides */
+    /* MASTER RESPONSIVE WRAPPER: Guarantees 20px margin on both sides on mobile */
     .site-container {
       width: 100% !important;
       max-width: 860px !important;
@@ -84,6 +78,7 @@
       padding-left: 20px !important;
       padding-right: 20px !important;
       box-sizing: border-box !important;
+      overflow: hidden !important;
     }
     @media (min-width: 640px) {
       .site-container {
@@ -148,13 +143,21 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Enforce word break so no heading or text pushes container */
+    /* CRITICAL CODE WRAPPING & CONTAINMENT */
     h1, h2, h3, h4, p, span, div, a {
       overflow-wrap: break-word !important;
       word-wrap: break-word !important;
       word-break: break-word !important;
     }
-    pre, code {
+    pre {
+      white-space: pre-wrap !important;
+      word-break: break-all !important;
+      overflow-wrap: anywhere !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      display: block !important;
+    }
+    code {
       white-space: pre-wrap !important;
       word-break: break-all !important;
       overflow-wrap: anywhere !important;
@@ -193,8 +196,8 @@
     </div>
   </header>
 
-  <!-- Hero Section (Safe 20px-32px margins, strictly bounded) -->
-  <section id="hero" class="relative pt-8 pb-12 sm:pt-16 sm:pb-20 tech-grid w-full">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-8 pb-12 sm:pt-16 sm:pb-20 tech-grid w-full overflow-hidden">
     <div class="site-container">
       
       <!-- Meta Label -->
@@ -210,7 +213,7 @@
         <span class="text-neutral-400">El rigor de un senior.</span>
       </h1>
 
-      <!-- Subhead (Break words, strict margins) -->
+      <!-- Subhead (Strict width containment) -->
       <p class="text-xs sm:text-base md:text-lg text-neutral-400 leading-relaxed mb-6 sm:mb-8 font-normal max-w-2xl">
         Construyo software web moderno (Vue, React, Node) acelerado por IA, pero con supervisión arquitectónica estricta: <strong class="text-neutral-200 font-medium">cero alucinaciones, tipado estricto y código listo para producción.</strong>
       </p>
@@ -257,8 +260,8 @@
     </div>
   </section>
 
-  <!-- Interactive Terminal Section -->
-  <section id="inspeccion" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
+  <!-- Interactive Terminal Section (Strict Horizontal Bounding) -->
+  <section id="inspeccion" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full overflow-hidden">
     <div class="site-container">
       
       <div class="mb-5 sm:mb-8">
@@ -274,8 +277,8 @@
       <!-- Terminal Window Box -->
       <div class="hairline-border rounded-lg bg-base-950 overflow-hidden shadow-2xl w-full">
         
-        <!-- Terminal Header -->
-        <div class="bg-base-900 px-3 sm:px-4 py-2.5 hairline-border-b flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <!-- Terminal Header: Stacks cleanly on mobile -->
+        <div class="bg-base-900 px-3 sm:px-4 py-2.5 hairline-border-b flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           
           <div class="flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-neutral-700"></span>
@@ -302,13 +305,15 @@
 
         </div>
 
-        <!-- Code Content Area -->
+        <!-- Code Content Area (Strict Pre Line Wrapping) -->
         <div class="p-3.5 sm:p-5 font-mono text-[11px] sm:text-xs md:text-sm leading-relaxed w-full min-h-[220px]">
           
           <!-- State 1: Raw AI Draft -->
           <div id="content-prompt" class="block w-full">
             <div class="text-neutral-500 mb-2">// ⚠️ Código típico de IA sin validar (tipo any, sin timeout)</div>
-            <pre class="text-neutral-300"><code><span class="text-purple-400">export async function</span> <span class="text-blue-400">processPayment</span>(data: <span class="text-red-400">any</span>) {
+            <pre class="text-neutral-300"><code><span class="text-purple-400">export async function</span> <span class="text-blue-400">processPayment</span>(
+  data: <span class="text-red-400">any</span>
+) {
   <span class="text-purple-400">const</span> res = <span class="text-purple-400">await</span> fetch(<span class="text-amber-300">'/api/checkout'</span>, {
     method: <span class="text-amber-300">'POST'</span>,
     body: JSON.stringify(data)
@@ -320,17 +325,21 @@
             </div>
           </div>
 
-          <!-- State 2: Human Audit Diff -->
+          <!-- State 2: Human Audit Diff (Carefully formatted short lines) -->
           <div id="content-audit" class="hidden w-full">
             <div class="text-neutral-500 mb-2">// 🔍 Auditoría Senior: Validación con Zod y Result Pattern</div>
             <pre class="text-neutral-300"><code><span class="text-neutral-500">+ import { z } from 'zod';</span>
-<span class="text-neutral-500">+ const Schema = z.object({ amount: z.number().positive() });</span>
+<span class="text-neutral-500">+ const Schema = z.object({</span>
+<span class="text-neutral-500">+   amount: z.number().positive()</span>
+<span class="text-neutral-500">+ });</span>
 
 <span class="text-red-400">- export async function processPayment(data: any)</span>
-<span class="text-emerald-400">+ export async function processPayment(raw: unknown): Promise&lt;Result&lt;Receipt, Err&gt;&gt; {</span>
+<span class="text-emerald-400">+ export async function processPayment(</span>
+<span class="text-emerald-400">+   raw: unknown</span>
+<span class="text-emerald-400">+ ): Promise&lt;Result&lt;Receipt, Err&gt;&gt; {</span>
 <span class="text-emerald-400">+   const valid = Schema.safeParse(raw);</span>
-<span class="text-emerald-400">+   if (!valid.success) return err(new ValidationError(valid.error));</span>
-<span class="text-neutral-500">+   // ... Conexión con timeout y reintentos</span>
+<span class="text-emerald-400">+   if (!valid.success) return err(new Error());</span>
+<span class="text-neutral-500">+   // ... Conexión segura con timeout</span>
 <span class="text-emerald-400">+ }</span></code></pre>
             <div class="mt-3 p-2.5 rounded bg-amber-950/20 border border-amber-900/40 text-amber-300 text-[11px] leading-relaxed">
               <strong>Decisión Humana:</strong> Se implementa `Result Pattern` y validación estricta en runtime con Zod.
@@ -340,7 +349,7 @@
           <!-- State 3: Production Code + Verification -->
           <div id="content-prod" class="hidden w-full">
             <div class="text-neutral-500 mb-2">// ✅ Resultado: Código probado y listo para producción</div>
-            <pre class="text-neutral-300"><code><span class="text-emerald-400">✓ tests/checkout.spec.ts</span> (4 passed, 0 failed)
+            <pre class="text-neutral-300"><code><span class="text-emerald-400">✓ tests/checkout.spec.ts</span> (4 passed)
 <span class="text-emerald-400">✓ typecheck:</span> 0 errors [vue-tsc]
 <span class="text-emerald-400">✓ security:</span> 0 vulnerabilities [clean]
 <span class="text-neutral-400">  Bundle: 14.2 kB gzip (0 layout shifts)</span></code></pre>
@@ -364,7 +373,7 @@
   </section>
 
   <!-- Filosofía / Manifiesto Técnico -->
-  <section id="manifiesto" class="py-12 sm:py-20 hairline-border-b w-full">
+  <section id="manifiesto" class="py-12 sm:py-20 hairline-border-b w-full overflow-hidden">
     <div class="site-container">
       
       <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
@@ -388,7 +397,7 @@
   </section>
 
   <!-- Servicios Freelance -->
-  <section id="servicios" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
+  <section id="servicios" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full overflow-hidden">
     <div class="site-container">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-10">
@@ -472,7 +481,7 @@
   </section>
 
   <!-- Proyectos Públicos -->
-  <section id="proyectos" class="py-12 sm:py-20 hairline-border-b w-full">
+  <section id="proyectos" class="py-12 sm:py-20 hairline-border-b w-full overflow-hidden">
     <div class="site-container">
       
       <div class="mb-6 sm:mb-10">
@@ -550,7 +559,7 @@
   </section>
 
   <!-- Trayectoria -->
-  <section id="trayectoria" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
+  <section id="trayectoria" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full overflow-hidden">
     <div class="site-container">
       
       <div class="max-w-2xl">
@@ -590,7 +599,7 @@
   </section>
 
   <!-- Contacto / Fast Pitch -->
-  <section id="contacto" class="py-14 sm:py-20 w-full">
+  <section id="contacto" class="py-14 sm:py-20 w-full overflow-hidden">
     <div class="site-container text-center">
       
       <div class="inline-block font-mono text-[10px] sm:text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-3 py-1 rounded-full mb-4">
@@ -625,7 +634,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 hairline-border-t text-xs font-mono text-neutral-500 w-full">
+  <footer class="py-6 hairline-border-t text-xs font-mono text-neutral-500 w-full overflow-hidden">
     <div class="site-container flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
       <div>
         © 2026 Roberto González · Senior Fullstack
