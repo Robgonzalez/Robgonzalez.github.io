@@ -49,17 +49,16 @@
   </script>
 
   <style>
-    /* Absolute Box-Sizing & Viewport Boundary Guarantee */
+    /* Strict Box Model & Zero Horizontal Overflow */
     *, *::before, *::after {
       box-sizing: border-box !important;
-      max-width: 100%;
     }
     :root {
       color-scheme: dark;
     }
     html, body {
       width: 100% !important;
-      max-width: 100% !important;
+      max-width: 100vw !important;
       overflow-x: hidden !important;
       margin: 0 !important;
       padding: 0 !important;
@@ -67,6 +66,12 @@
       color: #ededed;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-font-smoothing: antialiased;
+    }
+    /* Force all sections and containers strictly inside viewport */
+    section, header, footer, main {
+      width: 100% !important;
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
     }
     .tech-grid {
       background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
@@ -84,19 +89,24 @@
     .num-tabular {
       font-variant-numeric: tabular-nums;
     }
-    /* Enforce pre wrap so code NEVER expands screen width */
+    /* Wrap long words/code so nothing can push width */
+    h1, h2, h3, h4, p, span, a, div {
+      overflow-wrap: break-word !important;
+      word-wrap: break-word !important;
+    }
     pre, code {
       white-space: pre-wrap !important;
       word-break: break-word !important;
       overflow-wrap: anywhere !important;
+      max-width: 100% !important;
     }
   </style>
 </head>
 <body class="selection:bg-neutral-800 selection:text-white">
 
-  <!-- Top Navigation (Safe 100% mobile fit) -->
+  <!-- Top Navigation (24px lateral padding on mobile) -->
   <header class="sticky top-0 z-50 bg-[#090a0f]/95 backdrop-blur-md hairline-border-b w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 h-14 flex items-center justify-between w-full">
       
       <!-- Left: Identity -->
       <a href="#hero" class="flex items-center gap-2">
@@ -123,21 +133,19 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (Safe 24px margins, guaranteed smaller than viewport) -->
   <section id="hero" class="relative pt-8 pb-12 sm:pt-16 sm:pb-20 tech-grid w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 w-full">
       
       <!-- Meta Label -->
-      <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3 sm:mb-5">
-        <span class="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-neutral-400">
-          Senior Fullstack &amp; AI Integrator
-        </span>
-        <span class="text-neutral-600 font-mono text-xs hidden sm:inline">•</span>
-        <span class="font-mono text-[10px] sm:text-xs text-neutral-500">Santiago, CL</span>
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3 sm:mb-5 text-[10px] sm:text-xs font-mono text-neutral-400">
+        <span>SENIOR FULLSTACK &amp; AI INTEGRATOR</span>
+        <span class="text-neutral-600 hidden sm:inline">•</span>
+        <span class="text-neutral-500">Santiago, CL</span>
       </div>
 
-      <!-- Main Headline (Fits smoothly without edge crowding) -->
-      <h1 class="text-2xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-white leading-[1.2] mb-3 sm:mb-5">
+      <!-- Main Headline -->
+      <h1 class="text-2xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-white leading-tight mb-3 sm:mb-5">
         La velocidad de la IA.<br>
         <span class="text-neutral-400">El rigor de un senior.</span>
       </h1>
@@ -147,8 +155,8 @@
         Construyo software web moderno (Vue, React, Node) acelerado por IA, pero con supervisión arquitectónica estricta: <strong class="text-neutral-200 font-medium">cero alucinaciones, tipado estricto y código listo para producción.</strong>
       </p>
 
-      <!-- Action Buttons (Contained within margins, comfortable touch target) -->
-      <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-4 mb-8 sm:mb-14 w-full">
+      <!-- Action Buttons (Strictly smaller than viewport, 24px space on both sides) -->
+      <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-4 mb-8 sm:mb-14 w-full max-w-sm sm:max-w-none">
         <a href="#inspeccion" class="w-full sm:w-auto px-5 py-3 rounded bg-white text-black text-xs font-mono font-semibold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 text-center min-h-[44px]">
           <span>Ver flujo en consola</span>
           <span>↓</span>
@@ -162,27 +170,27 @@
         </button>
       </div>
 
-      <!-- Quick Metrics Grid: Clean 2x2 with plenty of edge room -->
+      <!-- Quick Metrics Grid: Clean 2x2 with clear margins -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 hairline-border rounded-lg overflow-hidden w-full">
-        <div class="bg-base-950 p-3 sm:p-5">
-          <div class="text-[10px] font-mono text-neutral-400 mb-1">experiencia</div>
+        <div class="bg-base-950 p-3 sm:p-5 min-w-0">
+          <div class="text-[10px] font-mono text-neutral-400 mb-1 truncate">experiencia</div>
           <div class="text-base sm:text-2xl font-mono font-bold text-white num-tabular">+8 años</div>
-          <div class="text-[10px] text-neutral-500 mt-1">Retail B2B &amp; SaaS</div>
+          <div class="text-[10px] text-neutral-500 mt-1 truncate">Retail B2B &amp; SaaS</div>
         </div>
-        <div class="bg-base-950 p-3 sm:p-5">
-          <div class="text-[10px] font-mono text-neutral-400 mb-1">tiempo_entrega</div>
+        <div class="bg-base-950 p-3 sm:p-5 min-w-0">
+          <div class="text-[10px] font-mono text-neutral-400 mb-1 truncate">tiempo_entrega</div>
           <div class="text-base sm:text-2xl font-mono font-bold text-white num-tabular">-50%</div>
-          <div class="text-[10px] text-neutral-500 mt-1">Aceleración IA</div>
+          <div class="text-[10px] text-neutral-500 mt-1 truncate">Aceleración IA</div>
         </div>
-        <div class="bg-base-950 p-3 sm:p-5">
-          <div class="text-[10px] font-mono text-neutral-400 mb-1">alucinación</div>
+        <div class="bg-base-950 p-3 sm:p-5 min-w-0">
+          <div class="text-[10px] font-mono text-neutral-400 mb-1 truncate">alucinación</div>
           <div class="text-base sm:text-2xl font-mono font-bold text-accent-emerald num-tabular">0.00%</div>
-          <div class="text-[10px] text-neutral-500 mt-1">Tipado y tests</div>
+          <div class="text-[10px] text-neutral-500 mt-1 truncate">Tipado y tests</div>
         </div>
-        <div class="bg-base-950 p-3 sm:p-5">
-          <div class="text-[10px] font-mono text-neutral-400 mb-1">disponibilidad</div>
-          <div class="text-base sm:text-2xl font-mono font-bold text-white num-tabular">Inmediata</div>
-          <div class="text-[10px] text-neutral-500 mt-1">Freelance activo</div>
+        <div class="bg-base-950 p-3 sm:p-5 min-w-0">
+          <div class="text-[10px] font-mono text-neutral-400 mb-1 truncate">disponibilidad</div>
+          <div class="text-base sm:text-2xl font-mono font-bold text-white num-tabular truncate">Inmediata</div>
+          <div class="text-[10px] text-neutral-500 mt-1 truncate">Freelance activo</div>
         </div>
       </div>
 
@@ -191,11 +199,11 @@
 
   <!-- Interactive Terminal Section -->
   <section id="inspeccion" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 w-full">
       
       <div class="mb-5 sm:mb-8">
         <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">02. Demostración en vivo</span>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
+        <h2 class="text-lg sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
           Cómo se ve la IA gobernada por un senior
         </h2>
         <p class="text-xs sm:text-sm text-neutral-400 mt-1 leading-relaxed">
@@ -203,7 +211,7 @@
         </p>
       </div>
 
-      <!-- Terminal Window Box -->
+      <!-- Terminal Window Box (Bounded) -->
       <div class="hairline-border rounded-lg bg-base-950 overflow-hidden shadow-2xl w-full">
         
         <!-- Terminal Header -->
@@ -218,15 +226,15 @@
 
           <!-- Step Switcher Tabs (3 columns mobile, 100% contained) -->
           <div class="grid grid-cols-3 sm:flex items-center gap-1 bg-base-950 p-1 rounded hairline-border w-full sm:w-auto">
-            <button onclick="switchTab('prompt')" id="tab-prompt" class="px-1.5 sm:px-2.5 py-1.5 text-[10px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[32px]">
+            <button onclick="switchTab('prompt')" id="tab-prompt" class="px-1 py-1.5 text-[10px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[32px]">
               <span class="sm:hidden">1. IA</span>
               <span class="hidden sm:inline">1. Propuesta IA</span>
             </button>
-            <button onclick="switchTab('audit')" id="tab-audit" class="px-1.5 sm:px-2.5 py-1.5 text-[10px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[32px]">
+            <button onclick="switchTab('audit')" id="tab-audit" class="px-1 py-1.5 text-[10px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[32px]">
               <span class="sm:hidden">2. Humano</span>
               <span class="hidden sm:inline">2. Auditoría</span>
             </button>
-            <button onclick="switchTab('prod')" id="tab-prod" class="px-1.5 sm:px-2.5 py-1.5 text-[10px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[32px]">
+            <button onclick="switchTab('prod')" id="tab-prod" class="px-1 py-1.5 text-[10px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[32px]">
               <span class="sm:hidden">3. Tests</span>
               <span class="hidden sm:inline">3. Producción</span>
             </button>
@@ -234,7 +242,7 @@
 
         </div>
 
-        <!-- Code Content Area (Always wraps, never overflows) -->
+        <!-- Code Content Area -->
         <div class="p-3.5 sm:p-5 font-mono text-[11px] sm:text-xs md:text-sm leading-relaxed w-full min-h-[220px]">
           
           <!-- State 1: Raw AI Draft -->
@@ -297,12 +305,12 @@
 
   <!-- Filosofía / Manifiesto Técnico -->
   <section id="manifiesto" class="py-12 sm:py-20 hairline-border-b w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 w-full">
       
       <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
         <div class="md:col-span-5">
           <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">01. Filosofía</span>
-          <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
             Por qué la velocidad sin criterio destruye proyectos
           </h2>
         </div>
@@ -321,12 +329,12 @@
 
   <!-- Servicios Freelance -->
   <section id="servicios" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 w-full">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-10">
         <div>
           <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">03. Servicios</span>
-          <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
             Trabajos pequeños y medianos
           </h2>
         </div>
@@ -405,11 +413,11 @@
 
   <!-- Proyectos Públicos -->
   <section id="proyectos" class="py-12 sm:py-20 hairline-border-b w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 w-full">
       
       <div class="mb-6 sm:mb-10">
         <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">04. Código abierto</span>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
+        <h2 class="text-lg sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">
           Proyectos en GitHub
         </h2>
       </div>
@@ -483,11 +491,11 @@
 
   <!-- Trayectoria -->
   <section id="trayectoria" class="py-12 sm:py-20 hairline-border-b bg-[#0c0d14] w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 w-full">
       
       <div class="max-w-2xl">
         <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">05. Trayectoria</span>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight mb-3">
+        <h2 class="text-lg sm:text-2xl md:text-3xl font-sans font-bold text-white tracking-tight mb-3">
           Más de 8 años construyendo software real
         </h2>
         <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6">
@@ -523,13 +531,13 @@
 
   <!-- Contacto / Fast Pitch -->
   <section id="contacto" class="py-14 sm:py-20 w-full">
-    <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
       
       <div class="inline-block font-mono text-[10px] sm:text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-3 py-1 rounded-full mb-4">
         ● DISPONIBLE PARA CONTRATACIÓN
       </div>
 
-      <h2 class="text-2xl sm:text-3xl font-sans font-bold text-white tracking-tight mb-3">
+      <h2 class="text-xl sm:text-3xl font-sans font-bold text-white tracking-tight mb-3">
         ¿Tienes una tarea o proyecto que resolver?
       </h2>
       <p class="text-neutral-400 text-xs sm:text-sm max-w-md mx-auto mb-6 leading-relaxed">
@@ -558,7 +566,7 @@
 
   <!-- Footer -->
   <footer class="py-6 hairline-border-t text-xs font-mono text-neutral-500 w-full">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
       <div>
         © 2026 Roberto González · Senior Fullstack
       </div>
@@ -578,11 +586,11 @@
         const btn = document.getElementById('tab-' + t);
         const content = document.getElementById('content-' + t);
         if (t === tab) {
-          btn.className = 'px-1.5 sm:px-2.5 py-1.5 text-[10px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[32px]';
+          btn.className = 'px-1 py-1.5 text-[10px] sm:text-xs font-mono rounded bg-neutral-800 text-white transition-colors text-center truncate min-h-[32px]';
           content.classList.remove('hidden');
           content.classList.add('block');
         } else {
-          btn.className = 'px-1.5 sm:px-2.5 py-1.5 text-[10px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[32px]';
+          btn.className = 'px-1 py-1.5 text-[10px] sm:text-xs font-mono rounded text-neutral-400 hover:text-white transition-colors text-center truncate min-h-[32px]';
           content.classList.add('hidden');
           content.classList.remove('block');
         }
